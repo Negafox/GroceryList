@@ -25,6 +25,7 @@ MainWindow::MainWindow(QWidget *parent) :
     m_view = new ChecklistView(this, m_checklist->Get());
     m_view->setGeometry(geometry());
     m_ui->setupUi(this);
+    setWindowTitle("Grocery List");
 }
 
 MainWindow::~MainWindow()

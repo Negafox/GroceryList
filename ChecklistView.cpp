@@ -14,9 +14,9 @@ ChecklistView::ChecklistView(QWidget *parent, ChecklistItems *items) :
 
 ChecklistView::~ChecklistView()
 {
-    for (ChecklistViewItems::iterator viewItem = m_viewItems.begin(); viewItem != m_viewItems.end(); ++viewItem)
+    for (ChecklistViewItems::size_type i = 0; i < m_viewItems.count(); ++i)
     {
-        delete &viewItem;
+        delete m_viewItems[i];
     }
     m_viewItems.clear();
 }
