@@ -5,7 +5,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget *parent, ChecklistItem *item) :
     m_item(item)
 {
     m_completeCheck = new QCheckBox(this);
-    connect(m_completeCheck, SIGNAL(checkBoxStateChanged(int)), this, SLOT(CompleteToggled(int)));
+    connect(m_completeCheck, SIGNAL(stateChanged(int)), this, SLOT(CompleteToggled(int)));
     m_completeCheck->setGeometry(0,
         0,
         30,
@@ -26,7 +26,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget *parent, ChecklistItem *item) :
     m_entryEdit->show();
     
     m_removeButton = new QPushButton(this);
-    connect(m_removeButton, SIGNAL(click()), this, SLOT(RemoveClick()));
+    connect(m_removeButton, SIGNAL(clicked()), this, SLOT(RemoveClick()));
     m_removeButton->setGeometry(m_completeCheck->width() + 5 + m_entryEdit->width() + 5,
         0,
         75,
