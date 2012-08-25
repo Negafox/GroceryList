@@ -1,31 +1,30 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 
-void SetupDummyData(Checklist* checklist)
+void SetupDummyData(Checklist::List* checklist)
 {
     // TEMP: Need to implement add, delete, save and load
-    ChecklistItems* items = checklist->Get();
-    ChecklistItem* item = new ChecklistItem(false, "Milk");
+    Checklist::Items* items = checklist->Get();
+    Checklist::Item* item = new Checklist::Item("Milk");
     items->push_back(item);
-    item = new ChecklistItem(true, "Lucky Charms");
+    item = new Checklist::Item("Lucky Charms", Checklist::Complete);
     items->push_back(item);
-    item = new ChecklistItem(true, "Wheat Bread");
+    item = new Checklist::Item("Wheat Bread", Checklist::Complete);
     items->push_back(item);
-    item = new ChecklistItem(false, "Peanut Butter M&Ms");
+    item = new Checklist::Item("Peanut Butter M&Ms");
     items->push_back(item);
-    
 }
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MainWindow)
 {
-    m_checklist = new Checklist();
+    m_checklist = new Checklist::List();
     SetupDummyData(m_checklist);
     m_view = new ChecklistView(this, m_checklist->Get());
     m_view->setGeometry(geometry());
-    m_ui->setupUi(this);
     setWindowTitle("Grocery List");
+    setMinimumSize(320, 240);
 }
 
 MainWindow::~MainWindow()

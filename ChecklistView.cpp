@@ -1,10 +1,10 @@
 #include "ChecklistView.h"
 
-ChecklistView::ChecklistView(QWidget *parent, ChecklistItems *items) :
+ChecklistView::ChecklistView(QWidget *parent, Checklist::Items *items) :
     QWidget(parent),
     m_items(items)
 {
-    for (ChecklistItems::size_type i = 0; i < items->count(); ++i)
+    for (Checklist::Items::size_type i = 0; i < items->count(); ++i)
     {
         ChecklistViewItem* viewItem = new ChecklistViewItem(this, (*items)[i]);
         viewItem->setGeometry(0, i * 35, this->width(), 30);

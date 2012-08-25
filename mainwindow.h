@@ -23,7 +23,7 @@ private:
     Ui::MainWindow *m_ui;
     ChecklistView *m_view;
     
-    Checklist *m_checklist;
+    Checklist::List *m_checklist;
 };
 
 #endif // MAINWINDOW_H

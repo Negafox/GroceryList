@@ -1,6 +1,6 @@
 #include "ChecklistViewItem.h"
 
-ChecklistViewItem::ChecklistViewItem(QWidget *parent, ChecklistItem *item) :
+ChecklistViewItem::ChecklistViewItem(QWidget *parent, Checklist::Item *item) :
     QWidget(parent),
     m_item(item)
 {
@@ -10,10 +10,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget *parent, ChecklistItem *item) :
         0,
         30,
         this->height());
-    Qt::CheckState isChecked = m_item->GetComplete() ?
-        Qt::Checked :
-        Qt::Unchecked;
-    m_completeCheck->setCheckState(isChecked);
+    m_completeCheck->setCheckState(static_cast<Qt::CheckState>(m_item->Completion()));
     m_completeCheck->show();
     
     m_entryEdit = new QLineEdit(this);
@@ -22,7 +19,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget *parent, ChecklistItem *item) :
         0,
         200,
         this->height());
-    m_entryEdit->setText(m_item->GetName());
+    m_entryEdit->setText(m_item->Name());
     m_entryEdit->show();
     
     m_removeButton = new QPushButton(this);
@@ -32,7 +29,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget *parent, ChecklistItem *item) :
         75,
         this->height());
     m_removeButton->setText("Remove");
-    m_removeButton->show();
+    m_removeButton->setVisible(false);
 }
 
 ChecklistViewItem::~ChecklistViewItem()
@@ -42,9 +39,19 @@ ChecklistViewItem::~ChecklistViewItem()
     delete m_entryEdit;
 }
 
+void ChecklistViewItem::enterEvent(QEvent* /*event*/)
+{
+    m_removeButton->setVisible(true);
+}
+
+void ChecklistViewItem::leaveEvent(QEvent* /*event*/)
+{
+    m_removeButton->setVisible(false);
+}
+
 void ChecklistViewItem::CompleteToggled(int state)
 {
-    m_item->SetComplete(state > 0);
+    m_item->SetCompletion(static_cast<Checklist::CompletionState>(state));
 }
 
 void ChecklistViewItem::NameChanged(QString text)
@@ -54,5 +61,4 @@ void ChecklistViewItem::NameChanged(QString text)
 
 void ChecklistViewItem::RemoveClick()
 {
-    
 }

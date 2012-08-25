@@ -1,34 +1,71 @@
 #include "Checklist.h"
 
-ChecklistItem::ChecklistItem(bool complete, QString name) :
-    m_complete(complete),
-    m_name(name)
+namespace Checklist
+{
+
+Item::Item(QString name, CompletionState completion, Item* parent) :
+    m_name(name),
+    m_completion(completion),
+    m_parent(parent)
 {
 }
 
-void ChecklistItem::SetName(QString name)
+void Item::SetName(QString name)
 {
     m_name = name;
 }
 
-QString ChecklistItem::GetName()
+QString Item::Name()
 {
     return m_name;
 }
     
-void ChecklistItem::SetComplete(bool complete)
+void Item::SetCompletion(CompletionState completion)
 {
-    m_complete = complete;
+    m_completion = completion;
 }
     
-bool ChecklistItem::GetComplete()
+CompletionState Item::Completion()
 {
-    return m_complete;
+    return m_completion;
 }
 
-ChecklistItems* Checklist::Get()
+QList<Item*> Item::Children()
 {
-    if (!m_items)
-        m_items = new ChecklistItems();
     return m_items;
 }
+    
+void Item::SetParent(Item* parent)
+{
+    m_parent = parent;
+}
+    
+Item* Item::Parent()
+{
+    return m_parent;
+}
+    
+void Item::Refresh()
+{
+    if (!m_items.empty())
+    {
+        CompletionState completion = m_items[0]->Completion();
+        for (QList<Item*>::Iterator item = ++m_items.begin(); item != m_items.end(); ++item)
+        {
+            if ((*item)->Completion() == Partial || (*item)->Completion() != completion)
+            {
+                m_completion = Partial;
+                return;
+            }
+        }
+    }
+}
+
+Items* List::Get()
+{
+    if (!m_items)
+        m_items = new Items();
+    return m_items;
+}
+
+};

@@ -11,7 +11,7 @@ class ChecklistViewItem : public QWidget
     Q_OBJECT
     
 public:
-    ChecklistViewItem(QWidget *parent = 0, ChecklistItem *item = 0);
+    ChecklistViewItem(QWidget *parent = 0, Checklist::Item *item = 0);
     ~ChecklistViewItem();
 
 public slots:
@@ -24,7 +24,10 @@ private:
     QLineEdit* m_entryEdit;
     QPushButton* m_removeButton;
     
-    ChecklistItem* m_item;
+    Checklist::Item* m_item;
+    
+    void enterEvent(QEvent* event);
+    void leaveEvent(QEvent* event);
 };
 
 #endif

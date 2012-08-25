@@ -4,31 +4,53 @@
 #include <QString>
 #include <QList>
 
-class ChecklistItem
+namespace Checklist
 {
-public:
-    ChecklistItem(bool complete = false, QString name = QString());
 
-    void SetName(QString name);
-    QString GetName();
     
-    void SetComplete(bool complete);
-    bool GetComplete();
-    
-private:
-    bool m_complete;
-    QString m_name;
+enum CompletionState
+{
+    Incomplete = 0,
+    Partial = 1,
+    Complete = 2
 };
 
-typedef QList<ChecklistItem*> ChecklistItems;
-
-class Checklist
+class Item
 {
 public:
-    ChecklistItems* Get();
+    Item(QString name = QString(), CompletionState completion = Incomplete, Item* parent = NULL);
+
+    void SetName(QString name);
+    QString Name();
+    
+    void SetCompletion(CompletionState completion);
+    CompletionState Completion();
+    
+    void SetParent(Item* parent);
+    Item* Parent();
+    
+    QList<Item*> Children();
+    
+    void Refresh();
     
 private:
-    ChecklistItems* m_items; 
+    QString m_name;
+    CompletionState m_completion;
+    Item* m_parent;
+    QList<Item*> m_items;
+};
+    
+typedef QList<Item*> Items;
+
+class List
+{
+public:
+    Items* Get();
+    
+private:
+    Items* m_items; 
+};
+    
 };
 
 #endif

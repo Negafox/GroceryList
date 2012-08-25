@@ -11,13 +11,13 @@ class ChecklistView : public QWidget
 Q_OBJECT
     
 public:
-    ChecklistView(QWidget *parent = 0, ChecklistItems *items = 0);
+    ChecklistView(QWidget *parent = 0, Checklist::Items *items = 0);
     ~ChecklistView();
     
 private:
     void resizeEvent(QResizeEvent* event);
     
-    ChecklistItems* m_items;
+    Checklist::Items* m_items;
     ChecklistViewItems m_viewItems;
 };
 
