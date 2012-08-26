@@ -21,6 +21,7 @@ public slots:
     void RemoveClick();
     
 signals:
+    void ToggledItem();
     void AddedItem();
     void RemovedItem();
     

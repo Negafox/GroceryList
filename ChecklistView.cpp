@@ -36,6 +36,7 @@ void ChecklistView::GenerateViewItems(Checklist::Items* items)
         ChecklistViewItem* viewItem = new ChecklistViewItem(this, (*items)[i]);
         viewItem->setGeometry(0, m_viewItems.count() * 35, this->width(), 30);
         viewItem->setVisible(true);
+        QObject::connect(viewItem, SIGNAL(ToggledItem()), this, SLOT(Refresh()));
         QObject::connect(viewItem, SIGNAL(AddedItem()), this, SLOT(Refresh()));
         QObject::connect(viewItem, SIGNAL(RemovedItem()), this, SLOT(Refresh()));
         m_viewItems.push_back(viewItem);

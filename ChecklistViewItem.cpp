@@ -13,6 +13,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget* parent, Checklist::Item* item) :
         0,
         30,
         this->height());
+    m_completeCheck->setEnabled(offset);
     m_completeCheck->setCheckState(static_cast<Qt::CheckState>(m_item->Completion()));
     
     // Name textbox
@@ -88,6 +89,9 @@ void ChecklistViewItem::CompleteToggled(int state)
         return;
     
     m_item->SetCompletion(static_cast<Checklist::CompletionState>(state));
+    
+    // Send notification an item checkstate changed.
+    emit ToggledItem();
 }
 
 void ChecklistViewItem::NameChanged(QString text)
@@ -96,6 +100,7 @@ void ChecklistViewItem::NameChanged(QString text)
     if (!m_item)
         return;
     
+    // Send notification an item was added.
     m_item->SetName(text);
 }
 

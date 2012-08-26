@@ -29,6 +29,7 @@ QString Item::Name()
 void Item::SetCompletion(CompletionState completion)
 {
     m_completion = completion;
+    Refresh();
 }
     
 CompletionState Item::Completion()
@@ -86,10 +87,10 @@ void Item::Refresh()
     // Update completion state based upon children, if necessary.
     if (!m_items->empty())
     {
-        CompletionState completion = (*m_items)[0]->Completion();
+        m_completion = (*m_items)[0]->Completion();
         for (QList<Item*>::Iterator item = ++m_items->begin(); item != m_items->end(); ++item)
         {
-            if ((*item)->Completion() == Partial || (*item)->Completion() != completion)
+            if ((*item)->Completion() == Partial || (*item)->Completion() != m_completion)
             {
                 m_completion = Partial;
                 break;
