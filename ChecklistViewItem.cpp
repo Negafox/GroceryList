@@ -1,64 +1,130 @@
 #include "ChecklistViewItem.h"
+#include <QPixmap>
 
-ChecklistViewItem::ChecklistViewItem(QWidget *parent, Checklist::Item *item) :
+ChecklistViewItem::ChecklistViewItem(QWidget* parent, Checklist::Item* item) :
     QWidget(parent),
     m_item(item)
 {
+    // Complete checkbox
+    int offset = item->Depth() * 25;
     m_completeCheck = new QCheckBox(this);
     connect(m_completeCheck, SIGNAL(stateChanged(int)), this, SLOT(CompleteToggled(int)));
-    m_completeCheck->setGeometry(0,
+    m_completeCheck->setGeometry(offset,
         0,
         30,
         this->height());
     m_completeCheck->setCheckState(static_cast<Qt::CheckState>(m_item->Completion()));
-    m_completeCheck->show();
     
+    // Name textbox
     m_entryEdit = new QLineEdit(this);
     connect(m_entryEdit, SIGNAL(textChanged(QString)), this, SLOT(NameChanged(QString)));
-    m_entryEdit->setGeometry(m_completeCheck->width() + 5,
+    m_entryEdit->setGeometry(m_completeCheck->geometry().right() + 5,
         0,
         200,
         this->height());
     m_entryEdit->setText(m_item->Name());
-    m_entryEdit->show();
     
+    // Add button
+    m_addButton = new QPushButton(this);
+    connect(m_addButton, SIGNAL(clicked()), this, SLOT(AddClick()));
+    m_addButton->setGeometry(m_entryEdit->geometry().right() + 5,
+        0,
+        25,
+        this->height());
+    m_addButton->setIcon(QIcon(":/Images/Images/Add.png"));
+    m_addButton->setFlat(true);
+    m_addButton->setVisible(false);
+    
+    // Remove button
     m_removeButton = new QPushButton(this);
     connect(m_removeButton, SIGNAL(clicked()), this, SLOT(RemoveClick()));
-    m_removeButton->setGeometry(m_completeCheck->width() + 5 + m_entryEdit->width() + 5,
+    m_removeButton->setGeometry(m_addButton->geometry().right() + 5,
         0,
-        75,
+        25,
         this->height());
-    m_removeButton->setText("Remove");
+    m_removeButton->setIcon(QIcon(":/Images/Images/Remove.png"));
+    m_removeButton->setFlat(true);
     m_removeButton->setVisible(false);
 }
 
 ChecklistViewItem::~ChecklistViewItem()
 {
+    // Delete our controls.
+    delete m_addButton;
+    m_addButton = NULL;
+    
     delete m_removeButton;
+    m_removeButton = NULL;
+    
     delete m_completeCheck;
+    m_completeCheck = NULL;
+    
     delete m_entryEdit;
+    m_entryEdit = NULL;
 }
 
 void ChecklistViewItem::enterEvent(QEvent* /*event*/)
 {
-    m_removeButton->setVisible(true);
+    if (m_addButton)
+        m_addButton->setVisible(true);
+    
+    if (m_removeButton)
+        m_removeButton->setVisible(true);
 }
 
 void ChecklistViewItem::leaveEvent(QEvent* /*event*/)
 {
-    m_removeButton->setVisible(false);
+    if (m_addButton)
+        m_addButton->setVisible(false);
+    
+    if (m_removeButton)
+        m_removeButton->setVisible(false);
 }
 
 void ChecklistViewItem::CompleteToggled(int state)
 {
+    // Sanity check.
+    if (!m_item)
+        return;
+    
     m_item->SetCompletion(static_cast<Checklist::CompletionState>(state));
 }
 
 void ChecklistViewItem::NameChanged(QString text)
 {
+    // Sanity check.
+    if (!m_item)
+        return;
+    
     m_item->SetName(text);
+}
+
+void ChecklistViewItem::AddClick()
+{
+    // Sanity check.
+    if (!m_item)
+        return;
+    
+    // Create new child for this item.
+    Checklist::Item* item = new Checklist::Item("[Enter Name]");
+    m_item->AddChild(item);
+    
+    // Send notification an item was added.
+    emit AddedItem();
 }
 
 void ChecklistViewItem::RemoveClick()
 {
+    // Sanity check.
+    if (!m_item)
+        return;
+    
+    // Remove item.
+    Checklist::Item* parent = m_item->Parent();
+    if (parent)
+        parent->RemoveChild(m_item);
+    delete m_item;
+    
+    // Send notification this item was removed.
+    emit RemovedItem();
 }

@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/Images">
+        <file>Images/Add.png</file>
+        <file>Images/Checked.png</file>
+        <file>Images/Incomplete.png</file>
+        <file>Images/Partial.png</file>
+        <file>Images/Remove.png</file>
+    </qresource>
+</RCC>

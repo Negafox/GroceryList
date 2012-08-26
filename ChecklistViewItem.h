@@ -17,11 +17,17 @@ public:
 public slots:
     void CompleteToggled(int state);
     void NameChanged(QString text);
+    void AddClick();
     void RemoveClick();
+    
+signals:
+    void AddedItem();
+    void RemovedItem();
     
 private:
     QCheckBox* m_completeCheck;
     QLineEdit* m_entryEdit;
+    QPushButton* m_addButton;
     QPushButton* m_removeButton;
     
     Checklist::Item* m_item;

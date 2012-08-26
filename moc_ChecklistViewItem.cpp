@@ -1,7 +1,7 @@
 /****************************************************************************
 ** Meta object code from reading C++ file 'ChecklistViewItem.h'
 **
-** Created: Fri Aug 24 22:07:23 2012
+** Created: Sat Aug 25 20:22:46 2012
 **      by: The Qt Meta Object Compiler version 63 (Qt 4.8.2)
 **
 ** WARNING! All changes made in this file will be lost!
@@ -23,24 +23,31 @@ static const uint qt_meta_data_ChecklistViewItem[] = {
        6,       // revision
        0,       // classname
        0,    0, // classinfo
-       3,   14, // methods
+       6,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       0,       // signalCount
+       2,       // signalCount
+
+ // signals: signature, parameters, type, tag, flags
+      19,   18,   18,   18, 0x05,
+      31,   18,   18,   18, 0x05,
 
  // slots: signature, parameters, type, tag, flags
-      25,   19,   18,   18, 0x0a,
-      51,   46,   18,   18, 0x0a,
-      72,   18,   18,   18, 0x0a,
+      51,   45,   18,   18, 0x0a,
+      77,   72,   18,   18, 0x0a,
+      98,   18,   18,   18, 0x0a,
+     109,   18,   18,   18, 0x0a,
 
        0        // eod
 };
 
 static const char qt_meta_stringdata_ChecklistViewItem[] = {
-    "ChecklistViewItem\0\0state\0CompleteToggled(int)\0"
-    "text\0NameChanged(QString)\0RemoveClick()\0"
+    "ChecklistViewItem\0\0AddedItem()\0"
+    "RemovedItem()\0state\0CompleteToggled(int)\0"
+    "text\0NameChanged(QString)\0AddClick()\0"
+    "RemoveClick()\0"
 };
 
 void ChecklistViewItem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
@@ -49,9 +56,12 @@ void ChecklistViewItem::qt_static_metacall(QObject *_o, QMetaObject::Call _c, in
         Q_ASSERT(staticMetaObject.cast(_o));
         ChecklistViewItem *_t = static_cast<ChecklistViewItem *>(_o);
         switch (_id) {
-        case 0: _t->CompleteToggled((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 1: _t->NameChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
-        case 2: _t->RemoveClick(); break;
+        case 0: _t->AddedItem(); break;
+        case 1: _t->RemovedItem(); break;
+        case 2: _t->CompleteToggled((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 3: _t->NameChanged((*reinterpret_cast< QString(*)>(_a[1]))); break;
+        case 4: _t->AddClick(); break;
+        case 5: _t->RemoveClick(); break;
         default: ;
         }
     }
@@ -89,10 +99,22 @@ int ChecklistViewItem::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 3)
+        if (_id < 6)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 3;
+        _id -= 6;
     }
     return _id;
+}
+
+// SIGNAL 0
+void ChecklistViewItem::AddedItem()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, 0);
+}
+
+// SIGNAL 1
+void ChecklistViewItem::RemovedItem()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, 0);
 }
 QT_END_MOC_NAMESPACE

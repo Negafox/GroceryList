@@ -6,7 +6,6 @@
 
 namespace Checklist
 {
-
     
 enum CompletionState
 {
@@ -19,6 +18,7 @@ class Item
 {
 public:
     Item(QString name = QString(), CompletionState completion = Incomplete, Item* parent = NULL);
+    ~Item();
 
     void SetName(QString name);
     QString Name();
@@ -29,15 +29,21 @@ public:
     void SetParent(Item* parent);
     Item* Parent();
     
-    QList<Item*> Children();
+    int Depth();
+    
+    void AddChild(Item* child);
+    void RemoveChild(Item* child);
+    QList<Item*>* Children();
     
     void Refresh();
     
 private:
+    int DepthInternal(Item* item, int index);
+    
     QString m_name;
     CompletionState m_completion;
     Item* m_parent;
-    QList<Item*> m_items;
+    QList<Item*>* m_items;
 };
     
 typedef QList<Item*> Items;

@@ -13,8 +13,11 @@
 		457F2B7BCC67267364379B65 /* moc_ChecklistViewItem.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 05F20B63EE610A32147E9D25 /* moc_ChecklistViewItem.cpp */; settings = {ATTRIBUTES = (); }; };
 		462C0F34BBEF2375A9469BB5 /* mainwindow.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = EA177DE95BF7D3EF58EE43F7 /* mainwindow.cpp */; settings = {ATTRIBUTES = (); }; };
 		501667F26B3C1FF6767A7C12 /* QtGui.framework in Frameworks & Libraries */ = {isa = PBXBuildFile; fileRef = 9B36DA7E32F0304E780E7972 /* QtGui.framework */; };
+		5939B770826F4934E8A368F4 /* ChecklistViewNewItem.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 12207239EE9E891FD9CC86B4 /* ChecklistViewNewItem.cpp */; settings = {ATTRIBUTES = (); }; };
 		71C275961BD9148A420E5F78 /* ChecklistViewItem.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 8CD660D2430F07F56BF9D704 /* ChecklistViewItem.cpp */; settings = {ATTRIBUTES = (); }; };
+		9672F1D2F6F6374D665DC768 /* moc_ChecklistViewNewItem.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = D72A86BAEE50BDE125174236 /* moc_ChecklistViewNewItem.cpp */; settings = {ATTRIBUTES = (); }; };
 		D4409654B1BBB9484818262D /* moc_ChecklistView.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 003C9D7146F7815074AD8A17 /* moc_ChecklistView.cpp */; settings = {ATTRIBUTES = (); }; };
+		E1F725B01DCF4BA812168A25 /* qrc_Resources.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 72A4B7662D1C1E2EA0BF8089 /* qrc_Resources.cpp */; settings = {ATTRIBUTES = (); }; };
 		E5FF720A9DA7F7FD9C439FA6 /* ChecklistView.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = 8BAB60967D085EF2C7752035 /* ChecklistView.cpp */; settings = {ATTRIBUTES = (); }; };
 		FE7ADF4E7756856659793FF5 /* Checklist.cpp in Build Sources */ = {isa = PBXBuildFile; fileRef = E85E8AC7B5B25C2F629C26E2 /* Checklist.cpp */; settings = {ATTRIBUTES = (); }; };
 /* End PBXBuildFile section */
@@ -23,8 +26,11 @@
 		003C9D7146F7815074AD8A17 /* moc_ChecklistView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = moc_ChecklistView.cpp; sourceTree = "<group>"; };
 		05F20B63EE610A32147E9D25 /* moc_ChecklistViewItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = moc_ChecklistViewItem.cpp; sourceTree = "<group>"; };
 		118FCBAABA162BA17933C789 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
-		1C76CD4415E4ACEE00164718 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		12207239EE9E891FD9CC86B4 /* ChecklistViewNewItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChecklistViewNewItem.cpp; sourceTree = "<group>"; };
+		1CF87A0615EA961200F0EF84 /* GroceryList.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GroceryList.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = moc_mainwindow.cpp; sourceTree = "<group>"; };
+		492A44B98AC26930763F1223 /* ChecklistViewNewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChecklistViewNewItem.h; sourceTree = "<group>"; };
+		72A4B7662D1C1E2EA0BF8089 /* qrc_Resources.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = qrc_Resources.cpp; sourceTree = "<group>"; };
 		7BC2E65A5E699A5E5D834CA2 /* QtCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QtCore.framework; path = /Library/Frameworks/QtCore.framework; sourceTree = "<absolute>"; };
 		8BAB60967D085EF2C7752035 /* ChecklistView.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChecklistView.cpp; sourceTree = "<group>"; };
 		8CD660D2430F07F56BF9D704 /* ChecklistViewItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = ChecklistViewItem.cpp; sourceTree = "<group>"; };
@@ -33,9 +39,11 @@
 		A0A08DD67249BF439713EC5B /* ChecklistViewItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ChecklistViewItem.h; sourceTree = "<group>"; };
 		AB241F823D3821A41AAC4BDE /* mainwindow.ui */ = {isa = PBXFileReference; lastKnownFileType = text; path = mainwindow.ui; sourceTree = "<group>"; };
 		AFB98B37FF0012B837A2131C /* ui_mainwindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ui_mainwindow.h; sourceTree = "<group>"; };
+		B88A2B1D5990837B4E2A0B74 /* Resources.qrc */ = {isa = PBXFileReference; lastKnownFileType = text; path = Resources.qrc; sourceTree = "<group>"; };
 		C04E15FDC6AFE1AE7EB8DE28 /* Checklist.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Checklist.h; sourceTree = "<group>"; };
 		C30D57C7FBD0FB887B1D3609 /* GroceryList.pro */ = {isa = PBXFileReference; lastKnownFileType = text; path = GroceryList.pro; sourceTree = "<group>"; };
 		C63FA392C61F27B1B13369C1 /* mainwindow.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = mainwindow.h; sourceTree = "<group>"; };
+		D72A86BAEE50BDE125174236 /* moc_ChecklistViewNewItem.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = moc_ChecklistViewNewItem.cpp; sourceTree = "<group>"; };
 		E85E8AC7B5B25C2F629C26E2 /* Checklist.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Checklist.cpp; sourceTree = "<group>"; };
 		EA177DE95BF7D3EF58EE43F7 /* mainwindow.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = mainwindow.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,17 +69,18 @@
 				46E892BBB6BB6952967E0561 /* Temporary Sources */,
 				883D7615C4D2DE3FA1218F12 /* Headers */,
 				7CABE3C80E79AD2B307756D2 /* Sources [qmake] */,
+				52C235EBF1C9B07808119459 /* Sources [RCC] */,
 				EEC299C65D5017EB9DD513B0 /* Sources [UIC] */,
 				ED1E82605DD74B483AF3C982 /* External Frameworks and Libraries */,
-				1C76CD4515E4ACEE00164718 /* Products */,
+				1CF87A0715EA961200F0EF84 /* Products */,
 			);
 			name = GroceryList;
 			sourceTree = "<group>";
 		};
-		1C76CD4515E4ACEE00164718 /* Products */ = {
+		1CF87A0715EA961200F0EF84 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1C76CD4415E4ACEE00164718 /* GroceryList.app */,
+				1CF87A0615EA961200F0EF84 /* GroceryList.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -81,10 +90,20 @@
 			children = (
 				003C9D7146F7815074AD8A17 /* moc_ChecklistView.cpp */,
 				05F20B63EE610A32147E9D25 /* moc_ChecklistViewItem.cpp */,
+				D72A86BAEE50BDE125174236 /* moc_ChecklistViewNewItem.cpp */,
 				336D3C48DD3B44974395C633 /* moc_mainwindow.cpp */,
+				72A4B7662D1C1E2EA0BF8089 /* qrc_Resources.cpp */,
 				AFB98B37FF0012B837A2131C /* ui_mainwindow.h */,
 			);
 			name = "Temporary Sources";
+			sourceTree = "<group>";
+		};
+		52C235EBF1C9B07808119459 /* Sources [RCC] */ = {
+			isa = PBXGroup;
+			children = (
+				B88A2B1D5990837B4E2A0B74 /* Resources.qrc */,
+			);
+			name = "Sources [RCC]";
 			sourceTree = "<group>";
 		};
 		7CABE3C80E79AD2B307756D2 /* Sources [qmake] */ = {
@@ -101,6 +120,7 @@
 				C04E15FDC6AFE1AE7EB8DE28 /* Checklist.h */,
 				92DB0F30AE141D14F7C66EC2 /* ChecklistView.h */,
 				A0A08DD67249BF439713EC5B /* ChecklistViewItem.h */,
+				492A44B98AC26930763F1223 /* ChecklistViewNewItem.h */,
 				C63FA392C61F27B1B13369C1 /* mainwindow.h */,
 			);
 			name = Headers;
@@ -129,6 +149,7 @@
 				E85E8AC7B5B25C2F629C26E2 /* Checklist.cpp */,
 				8BAB60967D085EF2C7752035 /* ChecklistView.cpp */,
 				8CD660D2430F07F56BF9D704 /* ChecklistViewItem.cpp */,
+				12207239EE9E891FD9CC86B4 /* ChecklistViewNewItem.cpp */,
 				118FCBAABA162BA17933C789 /* main.cpp */,
 				EA177DE95BF7D3EF58EE43F7 /* mainwindow.cpp */,
 			);
@@ -154,7 +175,7 @@
 			);
 			name = GroceryList;
 			productName = GroceryList;
-			productReference = 1C76CD4415E4ACEE00164718 /* GroceryList.app */;
+			productReference = 1CF87A0615EA961200F0EF84 /* GroceryList.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -173,7 +194,7 @@
 				en,
 			);
 			mainGroup = 05596AB53D8D521C69802C27 /* GroceryList */;
-			productRefGroup = 1C76CD4515E4ACEE00164718 /* Products */;
+			productRefGroup = 1CF87A0715EA961200F0EF84 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
@@ -224,11 +245,14 @@
 				FE7ADF4E7756856659793FF5 /* Checklist.cpp in Build Sources */,
 				E5FF720A9DA7F7FD9C439FA6 /* ChecklistView.cpp in Build Sources */,
 				71C275961BD9148A420E5F78 /* ChecklistViewItem.cpp in Build Sources */,
+				5939B770826F4934E8A368F4 /* ChecklistViewNewItem.cpp in Build Sources */,
 				2B093CA6F071B023A473CED0 /* main.cpp in Build Sources */,
 				462C0F34BBEF2375A9469BB5 /* mainwindow.cpp in Build Sources */,
 				D4409654B1BBB9484818262D /* moc_ChecklistView.cpp in Build Sources */,
 				457F2B7BCC67267364379B65 /* moc_ChecklistViewItem.cpp in Build Sources */,
+				9672F1D2F6F6374D665DC768 /* moc_ChecklistViewNewItem.cpp in Build Sources */,
 				26C2BED6C570C95F5243C556 /* moc_mainwindow.cpp in Build Sources */,
+				E1F725B01DCF4BA812168A25 /* qrc_Resources.cpp in Build Sources */,
 			);
 			name = "Build Sources";
 			runOnlyForDeploymentPostprocessing = 0;
