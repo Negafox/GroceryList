@@ -12,14 +12,16 @@ HEADERS += Checklist.h \
            ChecklistView.h \
            ChecklistViewItem.h \
            ChecklistViewNewItem.h \
-           mainwindow.h
+           mainwindow.h \
+    ChecklistSortBar.h
 FORMS += mainwindow.ui
 SOURCES += Checklist.cpp \
            ChecklistView.cpp \
            ChecklistViewItem.cpp \
            ChecklistViewNewItem.cpp \
            main.cpp \
-           mainwindow.cpp
+           mainwindow.cpp \
+    ChecklistSortBar.cpp
 
 RESOURCES += \
     Resources.qrc

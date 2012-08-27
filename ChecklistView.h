@@ -1,6 +1,7 @@
 #ifndef GroceryList_ChecklistView_h
 #define GroceryList_ChecklistView_h
 
+#include "ChecklistSortbar.h"
 #include "ChecklistViewItem.h"
 #include "ChecklistViewNewItem.h"
 #include "Checklist.h"
@@ -25,6 +26,7 @@ private:
     void GenerateViewItems(Checklist::Items* items);
     
     Checklist::Items* m_items;
+    ChecklistSortBar *m_sortBar;
     ChecklistViewItems m_viewItems;
     ChecklistViewNewItem* m_viewNewItem;
     

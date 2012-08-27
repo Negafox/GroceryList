@@ -17,6 +17,12 @@ ChecklistView::ChecklistView(QWidget* parent, Checklist::Items* items) :
     // TEMP: Generate hardcoded suggestion list.
     GenerateSuggestionList(m_suggestionList);
     
+    // Create sort bar.
+    m_sortBar = new ChecklistSortBar(this, items);
+    m_sortBar->setGeometry(0, 0, this->width(), 30);
+    m_sortBar->setVisible(true);
+    QObject::connect(m_sortBar, SIGNAL(SortChanged()), this, SLOT(Refresh()));
+    
     // Create new checklist item widget.
     m_viewNewItem = new ChecklistViewNewItem(this, items);
     m_viewNewItem->setVisible(true);
@@ -48,7 +54,7 @@ void ChecklistView::GenerateViewItems(Checklist::Items* items)
     {
         // Add this item.
         ChecklistViewItem* viewItem = new ChecklistViewItem(this, (*items)[i]);
-        viewItem->setGeometry(0, m_viewItems.count() * 35, this->width(), 30);
+        viewItem->setGeometry(0, (m_viewItems.count() + 1) * 35, this->width(), 30);
         viewItem->setVisible(true);
         viewItem->SetAutoComplete(m_suggestionList);
         QObject::connect(viewItem, SIGNAL(ToggledItem()), this, SLOT(Refresh()));
@@ -66,7 +72,7 @@ void ChecklistView::Refresh()
 {
     Clear();
     GenerateViewItems(m_items);
-    m_viewNewItem->setGeometry(0, m_viewItems.count() * 35, 400, 30);
+    m_viewNewItem->setGeometry(0, (m_viewItems.count() + 1) * 35, 400, 30);
     
 }
 
