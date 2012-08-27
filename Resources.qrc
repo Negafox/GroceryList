@@ -5,5 +5,9 @@
         <file>Images/Incomplete.png</file>
         <file>Images/Partial.png</file>
         <file>Images/Remove.png</file>
+        <file>Images/ArrowDownDisabled.png</file>
+        <file>Images/ArrowDownEnabled.png</file>
+        <file>Images/ArrowUpDisabled.png</file>
+        <file>Images/ArrowUpEnabled.png</file>
     </qresource>
 </RCC>

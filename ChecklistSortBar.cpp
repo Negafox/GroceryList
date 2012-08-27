@@ -12,7 +12,7 @@ ChecklistSortBar::ChecklistSortBar(QWidget* parent, Checklist::Items* items) :
         0,
         25,
         this->height());
-    m_completeSortButton->setIcon(QIcon(":/Images/Images/Add.png"));
+    m_completeSortButton->setIcon(QIcon(":/Images/Images/ArrowUpEnabled.png"));
     m_completeSortButton->setFlat(true);
     m_completeSortButton->setVisible(true);
     
@@ -23,7 +23,7 @@ ChecklistSortBar::ChecklistSortBar(QWidget* parent, Checklist::Items* items) :
         0,
         25,
         this->height());
-    m_nameSortButton->setIcon(QIcon(":/Images/Images/Add.png"));
+    m_nameSortButton->setIcon(QIcon(":/Images/Images/ArrowDownDisabled.png"));
     m_nameSortButton->setFlat(true);
     m_nameSortButton->setVisible(true);
 }
@@ -68,12 +68,17 @@ void ChecklistSortBar::CompleteSortClick()
     {
         std::sort(m_items->begin(), m_items->end(), SortByCompleteDown);
         m_sortOrder = CompleteSortDown;
+		m_completeSortButton->setIcon(QIcon(":/Images/Images/ArrowDownEnabled.png"));
     }
     else
     {
         std::sort(m_items->begin(), m_items->end(), SortByCompleteUp);
         m_sortOrder = CompleteSortUp;
+		m_completeSortButton->setIcon(QIcon(":/Images/Images/ArrowUpEnabled.png"));
     }
+
+	// Show disabled icon for name sort button.
+	m_nameSortButton->setIcon(QIcon(":/Images/Images/ArrowDownDisabled.png"));
     
     // Send notification that the sorting changed.
     emit SortChanged();
@@ -89,12 +94,17 @@ void ChecklistSortBar::NameSortClick()
     {
         std::sort(m_items->begin(), m_items->end(), SortByNameDown);
         m_sortOrder = NameSortDown;
+		m_nameSortButton->setIcon(QIcon(":/Images/Images/ArrowDownEnabled.png"));
     }
     else
     {
         std::sort(m_items->begin(), m_items->end(), SortByNameUp);
         m_sortOrder = NameSortUp;
+		m_nameSortButton->setIcon(QIcon(":/Images/Images/ArrowUpEnabled.png"));
     }
+
+	// Show disabled icon for complete sort button.
+	m_completeSortButton->setIcon(QIcon(":/Images/Images/ArrowDownDisabled.png"));
     
     // Send notification that the sorting changed.
     emit SortChanged();
