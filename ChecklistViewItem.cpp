@@ -13,7 +13,7 @@ ChecklistViewItem::ChecklistViewItem(QWidget* parent, Checklist::Item* item) :
         0,
         30,
         this->height());
-    m_completeCheck->setEnabled(offset);
+    m_completeCheck->setEnabled(!m_item->Children()->count());
     m_completeCheck->setCheckState(static_cast<Qt::CheckState>(m_item->Completion()));
     
     // Name textbox

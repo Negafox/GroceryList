@@ -5,6 +5,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
     m_ui(new Ui::MainWindow)
 {
+    m_ui->setupUi(this);
     m_checklist = new Checklist::List();
     m_view = new ChecklistView(this, m_checklist->Get());
     m_view->setGeometry(geometry());
