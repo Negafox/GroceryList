@@ -2,6 +2,7 @@
 
 ChecklistViewNewItem::ChecklistViewNewItem(QWidget* parent, Checklist::Items* items) :
     QWidget(parent),
+    m_completer(NULL),
     m_items(items)
 {
     // Name textbox
@@ -32,6 +33,24 @@ ChecklistViewNewItem::~ChecklistViewNewItem()
     
     delete m_addButton;
     m_addButton = NULL;
+}
+
+void ChecklistViewNewItem::SetAutoComplete(QStringList& list)
+{
+    if (m_completer)
+    {
+        m_entryEdit->setCompleter(NULL);
+        
+        delete m_completer;
+        m_completer = NULL;
+    }
+    
+    if (!list.empty())
+    {
+        m_completer = new QCompleter(list, this);
+        m_completer->setCaseSensitivity(Qt::CaseInsensitive);
+        m_entryEdit->setCompleter(m_completer);
+    }
 }
 
 void ChecklistViewNewItem::AddClick()

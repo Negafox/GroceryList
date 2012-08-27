@@ -3,6 +3,7 @@
 
 ChecklistViewItem::ChecklistViewItem(QWidget* parent, Checklist::Item* item) :
     QWidget(parent),
+    m_completer(NULL),
     m_item(item)
 {
     // Complete checkbox
@@ -62,6 +63,24 @@ ChecklistViewItem::~ChecklistViewItem()
     
     delete m_entryEdit;
     m_entryEdit = NULL;
+}
+
+void ChecklistViewItem::SetAutoComplete(QStringList& list)
+{
+    if (m_completer)
+    {
+        m_entryEdit->setCompleter(NULL);
+        
+        delete m_completer;
+        m_completer = NULL;
+    }
+
+    if (!list.empty())
+    {
+        m_completer = new QCompleter(list, this);
+        m_completer->setCaseSensitivity(Qt::CaseInsensitive);
+        m_entryEdit->setCompleter(m_completer);
+    }
 }
 
 void ChecklistViewItem::enterEvent(QEvent* /*event*/)

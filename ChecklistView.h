@@ -1,7 +1,6 @@
 #ifndef GroceryList_ChecklistView_h
 #define GroceryList_ChecklistView_h
 
-#include <QLayout>
 #include "ChecklistViewItem.h"
 #include "ChecklistViewNewItem.h"
 #include "Checklist.h"
@@ -28,6 +27,8 @@ private:
     Checklist::Items* m_items;
     ChecklistViewItems m_viewItems;
     ChecklistViewNewItem* m_viewNewItem;
+    
+    QStringList m_suggestionList;
 };
 
 #endif

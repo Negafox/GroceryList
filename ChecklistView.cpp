@@ -1,12 +1,26 @@
 #include "ChecklistView.h"
 
+void GenerateSuggestionList(QStringList& list)
+{
+    list << "Chicken";
+    list << "Beef";
+    list << "Rice";
+    list << "Beans";
+    list << "Cereal";
+    list << "Soda";
+}
+
 ChecklistView::ChecklistView(QWidget* parent, Checklist::Items* items) :
     QWidget(parent),
     m_items(items)
 {
+    // TEMP: Generate hardcoded suggestion list.
+    GenerateSuggestionList(m_suggestionList);
+    
     // Create new checklist item widget.
     m_viewNewItem = new ChecklistViewNewItem(this, items);
     m_viewNewItem->setVisible(true);
+    m_viewNewItem->SetAutoComplete(m_suggestionList);
     QObject::connect(m_viewNewItem, SIGNAL(AddedItem()), this, SLOT(Refresh()));
     
     // Generate the checklist widgets.
@@ -36,6 +50,7 @@ void ChecklistView::GenerateViewItems(Checklist::Items* items)
         ChecklistViewItem* viewItem = new ChecklistViewItem(this, (*items)[i]);
         viewItem->setGeometry(0, m_viewItems.count() * 35, this->width(), 30);
         viewItem->setVisible(true);
+        viewItem->SetAutoComplete(m_suggestionList);
         QObject::connect(viewItem, SIGNAL(ToggledItem()), this, SLOT(Refresh()));
         QObject::connect(viewItem, SIGNAL(AddedItem()), this, SLOT(Refresh()));
         QObject::connect(viewItem, SIGNAL(RemovedItem()), this, SLOT(Refresh()));
